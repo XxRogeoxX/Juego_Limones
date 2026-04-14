@@ -15,6 +15,7 @@ let limonY=0;
 let puntaje=0;  
 let vidas=3;
 let velocidadCaida=200;
+let intervalo;
 
 function dibujarSuelo(){
     ctx.fillStyle="black"
@@ -27,7 +28,7 @@ function dibujarPersonaje(){
 
 }
 function iniciar(){
-    setInterval(bajarLimon,velocidadCaida);// es una funcion que recibe otra funcion como parametro y dispara cada medio segundo
+    intervalo = setInterval(bajarLimon,velocidadCaida);// es una funcion que recibe otra funcion como parametro y dispara cada medio segundo
     dibujarSuelo();
     dibujarPersonaje();
     aparecerLimon();
@@ -85,6 +86,7 @@ function detectarAtrapado() {
             velocidadCaida = 100;
         } 
         else if (puntaje >= 10) {
+            clearInterval(intervalo); // detiene la caida del limon cuanod ganamos
             alert("🍋 ¡TIENES LOS LIMONES! Ahora solo te falta la sal y el tequila. ¡ERES EL GANADOR!");
         }
     }
@@ -97,6 +99,7 @@ function detectarPiso(){
         mostrarSpam("txtVidas",vidas);
     }
     if (vidas === 0) {
+            clearInterval(intervalo); // detiene la caida del limon cuanod perdemos 
             alert("GAME OVER");
         }
 }
