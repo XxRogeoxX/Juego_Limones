@@ -67,15 +67,26 @@ function bajarLimon(){
 
 function detectarAtrapado() {
     if (
-        limonX < personajeX + ANCHO_PERSONAJE && // El limón no ha pasado el borde derecho
-        limonX + ANCHO_LIMON > personajeX &&     // El limón no está antes del borde izquierdo
-        limonY < personajeY + ALTURA_PERSONAJE && // El limón no ha pasado el borde inferior
-        limonY + ALTURA_LIMON > personajeY          // El limón no está antes del borde superior
+        limonX < personajeX + ANCHO_PERSONAJE && 
+        limonX + ANCHO_LIMON > personajeX &&     
+        limonY < personajeY + ALTURA_PERSONAJE && 
+        limonY + ALTURA_LIMON > personajeY         
     ) {
-        //alert("¡ATRAPADO!");
         aparecerLimon();
-        puntaje=puntaje+1;
-        mostrarSpam("txtPuntaje",puntaje);   
+        puntaje = puntaje + 1;
+        mostrarSpam("txtPuntaje", puntaje);
+
+        // RANGOS DE VELOCIDAD DE CAIDA
+        
+        if (puntaje >= 3 && puntaje <= 5) {
+            velocidadCaida = 150;
+        } 
+        else if (puntaje >= 6 && puntaje <= 9) {
+            velocidadCaida = 100;
+        } 
+        else if (puntaje >= 10) {
+            alert("🍋 ¡TIENES LOS LIMONES! Ahora solo te falta la sal y el tequila. ¡ERES EL GANADOR!");
+        }
     }
 }
 
