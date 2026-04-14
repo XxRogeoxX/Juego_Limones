@@ -14,7 +14,7 @@ let limonY=0;
 
 let puntaje=0;  
 let vidas=3;
-
+let velocidadCaida=200;
 
 function dibujarSuelo(){
     ctx.fillStyle="black"
@@ -27,6 +27,7 @@ function dibujarPersonaje(){
 
 }
 function iniciar(){
+    setInterval(bajarLimon,velocidadCaida);// es una funcion que recibe otra funcion como parametro y dispara cada medio segundo
     dibujarSuelo();
     dibujarPersonaje();
     aparecerLimon();
@@ -79,11 +80,14 @@ function detectarAtrapado() {
 }
 
 function detectarPiso(){
-    if(limonY+ALTURA_LIMON==canvas.height-ALTURA_SUELO){
+    if(limonY+ALTURA_LIMON>=canvas.height-ALTURA_SUELO){
         aparecerLimon();
         vidas=vidas-1;
         mostrarSpam("txtVidas",vidas);
     }
+    if (vidas === 0) {
+            alert("GAME OVER");
+        }
 }
 
 function aparecerLimon(){
