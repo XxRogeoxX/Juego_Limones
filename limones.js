@@ -12,6 +12,10 @@ let personajeY=canvas.height-(ALTURA_SUELO+ALTURA_PERSONAJE);
 let limonX=canvas.width/2;
 let limonY=0;
 
+let puntaje=0;  
+let vidas=3;
+
+
 function dibujarSuelo(){
     ctx.fillStyle="black"
     ctx.fillRect(0,canvas.height-ALTURA_SUELO,canvas.width,ALTURA_SUELO);
@@ -56,24 +60,32 @@ function dibujarLimon(){
 function bajarLimon(){
     limonY=limonY+10;
     actualizarPantalla();
-    detectarColision();
+    detectarAtrapado();
+    detectarPiso();
 }
 
-function detectarColision() {
+function detectarAtrapado() {
     if (
         limonX < personajeX + ANCHO_PERSONAJE && // El limón no ha pasado el borde derecho
         limonX + ANCHO_LIMON > personajeX &&     // El limón no está antes del borde izquierdo
         limonY < personajeY + ALTURA_PERSONAJE && // El limón no ha pasado el borde inferior
         limonY + ALTURA_LIMON > personajeY          // El limón no está antes del borde superior
     ) {
-        alert("¡ATRAPADO!");
+        //alert("¡ATRAPADO!");
         aparecerLimon();
+        puntaje=puntaje+1;
+        mostrarSpam("txtPuntaje",puntaje);   
     }
 }
-function probarAleatorio(){
-    let aleatorio = generarAleatorio(10, 80);
-    console.log(aleatorio);
+
+function detectarPiso(){
+    if(limonY+ALTURA_LIMON==canvas.height-ALTURA_SUELO){
+        aparecerLimon();
+        vidas=vidas-1;
+        mostrarSpam("txtVidas",vidas);
+    }
 }
+
 function aparecerLimon(){
     limonX=generarAleatorio(0,canvas.width-ANCHO_LIMON);
     limonY=0;
