@@ -28,6 +28,7 @@ function dibujarPersonaje(){
 
 }
 function iniciar(){
+    clearInterval(intervalo); // Agrege el clearInterval para evitar que se acumulen intervalos al reiniciar el juego
     intervalo = setInterval(bajarLimon,velocidadCaida);// es una funcion que recibe otra funcion como parametro y dispara cada medio segundo
     dibujarSuelo();
     dibujarPersonaje();
@@ -76,18 +77,46 @@ function detectarAtrapado() {
         aparecerLimon();
         puntaje = puntaje + 1;
         mostrarSpam("txtPuntaje", puntaje);
-
-        // RANGOS DE VELOCIDAD DE CAIDA
         
-        if (puntaje >= 3 && puntaje <= 5) {
+        if (puntaje === 3) {
             velocidadCaida = 150;
+            clearInterval(intervalo);
+            intervalo = setInterval(bajarLimon, velocidadCaida);
         } 
-        else if (puntaje >= 6 && puntaje <= 9) {
+        else if (puntaje === 4) {
+            velocidadCaida = 150;
+            clearInterval(intervalo);
+            intervalo = setInterval(bajarLimon, velocidadCaida);
+        } 
+        else if (puntaje === 5) {
+            velocidadCaida = 150;
+            clearInterval(intervalo);
+            intervalo = setInterval(bajarLimon, velocidadCaida);
+        } 
+
+        else if (puntaje === 6) {
             velocidadCaida = 100;
+            clearInterval(intervalo);
+            intervalo = setInterval(bajarLimon, velocidadCaida);
         } 
-        else if (puntaje >= 10) {
-            clearInterval(intervalo); // detiene la caida del limon cuanod ganamos
-            alert("🍋 ¡TIENES LOS LIMONES! Ahora solo te falta la sal y el tequila. ¡ERES EL GANADOR!");
+        else if (puntaje === 7) {
+            velocidadCaida = 100;
+            clearInterval(intervalo);
+            intervalo = setInterval(bajarLimon, velocidadCaida);
+        } 
+        else if (puntaje === 8) {
+            velocidadCaida = 100;
+            clearInterval(intervalo);
+            intervalo = setInterval(bajarLimon, velocidadCaida);
+        } 
+        else if (puntaje === 9) {
+            velocidadCaida = 100;
+            clearInterval(intervalo);
+            intervalo = setInterval(bajarLimon, velocidadCaida);
+        } 
+        else if (puntaje === 10) {
+            clearInterval(intervalo); 
+            alert("🍋 ¡VAMOS POR ESE TEQUILA! ¡ERES EL GANADOR!");
         }
     }
 }
@@ -108,4 +137,15 @@ function aparecerLimon(){
     limonX=generarAleatorio(0,canvas.width-ANCHO_LIMON);
     limonY=0;
     actualizarPantalla();
+}
+
+function reiniciar() {
+    vidas = 3;
+    puntaje = 0;
+    velocidadCaida = 200;
+
+    mostrarSpam("txtVidas", vidas);
+    mostrarSpam("txtPuntaje", puntaje);
+
+    iniciar();
 }
