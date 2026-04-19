@@ -1,72 +1,113 @@
+/* Configuración Base */
 body {
   font-family: 'Press Start 2P', cursive;
-  background: linear-gradient(to bottom, #5C94FC 0%, #87CEEB 100%);
-  color: #FFD700;
-  text-align: center;
+  /* Fondo de Mario & Luigi recuperado */
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), 
+              url('https://images.alphacoders.com/605/605592.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #fff;
   margin: 0;
-  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 15px;
+}
+
+.contenedor-ninja {
+  background-color: rgba(20, 20, 20, 0.85);
+  border: 6px solid #4a2c1d; /* Bordes color madera */
+  border-radius: 8px;
+  padding: 25px;
+  max-width: 95vw;
+  width: 650px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.9);
 }
 
 h1 {
-  color: #FF0000;
-  text-shadow: 2px 2px #000;
-  font-size: 24px;
+  color: #ff4500; /* Naranja vibrante */
+  text-shadow: 3px 3px #000;
+  font-size: 1.4rem;
+  margin-top: 0;
 }
 
-h2 {
-  color: #FFD700;
-  font-size: 12px;
+.autor-tag {
+  color: #f8d024; /* Dorado para que resalte con el fondo de Mario */
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
-p {
-  color: #FFF;
-  font-size: 10px;
-}
-
-.contenedor {
-  max-width: 800px;
-  margin: 0 auto;
-  border: 5px solid #000;
-  background-color: rgba(0,0,0,0.2);
-  padding: 20px;
-  border-radius: 15px;
+.zona-combate {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 15px 0;
 }
 
 canvas {
-  background-color: #87CEEB;
-  border: 5px solid #000;
-  display: block;
-  margin: 20px auto;
-  box-shadow: 0 0 20px rgba(0,0,0,0.8);
+  background-color: #5c94fc; /* Color cielo original de Mario */
+  border: 4px solid #4a2c1d;
+  max-width: 100%;
+  height: auto;
 }
 
-.panel {
-  margin: 20px 0;
-  background-color: #000;
-  color: #FFD700;
-  padding: 10px;
-  border: 2px solid #FFD700;
-  display: inline-block;
-  font-size: 10px;
+/* UI estilo Pergamino */
+.pergamino-stats {
+  display: flex;
+  justify-content: space-around;
+  background: #f1e4c0; /* Papel pergamino */
+  border-left: 15px solid #e52521; /* Rojo Mario en los bordes del pergamino */
+  border-right: 15px solid #e52521;
+  padding: 12px;
+  margin-bottom: 20px;
 }
 
-.panel p {
-  margin: 5px 0;
+.stat-box {
+  color: #1a1a1a;
+  font-size: 0.8rem;
+  font-weight: bold;
 }
 
-.botones button {
-  margin: 5px;
-  padding: 10px 16px;
-  font-size: 8px;
+/* Botones con estilo híbrido */
+.controles-jutsu {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.btn-kunai {
+  background-color: #333;
+  color: #fff;
+  border: 2px solid #f8d024;
+  padding: 15px;
   font-family: inherit;
-  background-color: #FF0000;
-  color: #FFF;
-  border: 3px solid #000;
+  font-size: 0.9rem;
   cursor: pointer;
-  text-transform: uppercase;
-  border-radius: 5px;
+  transition: 0.2s;
+  box-shadow: 3px 3px 0px #000;
 }
 
-.botones button:hover {
-  background-color: #8B0000;
+.btn-kunai:hover {
+  background-color: #f8d024;
+  color: #000;
+}
+
+.btn-kunai:active {
+  box-shadow: 0px 0px 0px;
+  transform: translate(3px, 3px);
+}
+
+.btn-reset {
+  background-color: #43b047; /* Verde Luigi para el botón de reinicio */
+  border-color: #fff;
+}
+
+/* Ajustes Responsive */
+@media (max-width: 600px) {
+  h1 { font-size: 1rem; }
+  .pergamino-stats { font-size: 0.6rem; padding: 8px; border-width: 8px; }
+  .btn-kunai { padding: 10px; font-size: 0.7rem; }
 }

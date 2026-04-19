@@ -1,29 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <title>Caza Limones</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Misión: Caza Limones Ninja</title>
   <link rel="stylesheet" href="limones.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body onload="iniciar()">
-  <div class="contenedor">
-    <h1>Atrapar Limones</h1>
-    <p>Si del cielo te caen limones ..... </p>
-    <h2> Autor : Ronald Sánchez </h2>
-    <canvas id="areaJuego" width="600" height="400"></canvas>
-    <div class="panel">
-      <p>Puntaje: <span id="txtPuntaje">0</span></p>
-      <p>Vidas: <span id="txtVidas">3</span></p>
-    </div>
-    <div class="botones">
-      <button onclick="moverIzquierda()">Izquierda</button>
-      <button onclick="moverDerecha()">Derecha</button>
+  <div class="contenedor-ninja">
+    <header>
+      <h1>ENTRENAMIENTO SHINOBI</h1>
+      <p>Atrapa los limones antes de que toquen el dojo...</p>
+      <h2 class="autor-tag">Sensei: Ronald Sánchez</h2>
+    </header>
 
-      <button onclick="reiniciar()">Reiniciar</button>
+    <div class="zona-combate">
+      <canvas id="areaJuego" width="600" height="400"></canvas>
+    </div>
+
+    <div class="pergamino-stats">
+      <div class="stat-box">PUNTOS: <span id="txtPuntaje">0</span></div>
+      <div class="stat-box">VIDAS: <span id="txtVidas">3</span></div>
+    </div>
+
+    <div class="controles-jutsu">
+      <button class="btn-kunai" onclick="moverIzquierda()">◄</button>
+      <button class="btn-kunai btn-reset" onclick="reiniciar()">REINTENTAR</button>
+      <button class="btn-kunai" onclick="moverDerecha()">►</button>
     </div>
   </div>
+
   <script src="limones.js"></script>
   <script src="util.js"></script>
-
 </body>
 </html>
